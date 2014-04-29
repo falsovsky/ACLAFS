@@ -29,16 +29,28 @@ namespace ACLAFS
             this.directories = new List<String>();
         }
 
-        public void ParseFSOutput() {
+        public Boolean ParseFSOutput() {
             Process p = new Process();
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = true;
             p.StartInfo.FileName = "fs.exe";
             p.StartInfo.Arguments = @"listacl " + this.directory;
             p.Start();
 
             string output = p.StandardOutput.ReadToEnd();
+            string outputError = p.StandardError.ReadToEnd();
+
             p.WaitForExit();
+
+            if (p.ExitCode != 0)
+            {
+                MessageBox.Show("Are you sure this folder is an AFS folder?\n\n" +
+                    outputError,
+                    "Error reading folder ACL",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             this.acls["r"] = 0;
             this.acls["l"] = 0;
@@ -66,6 +78,8 @@ namespace ACLAFS
                     if (r.IndexOf("a") != -1) { this.acls["a"] = 1; } else { this.acls["a"] = 0; }
                 }
             }
+
+            return true;
         }
 
         public void ApplyAcl(String acl, Boolean recursive = false)
@@ -88,7 +102,12 @@ namespace ACLAFS
 
                     if (p.ExitCode != 0)
                     {
-                        MessageBox.Show("Erro a Aplicar ACL " + acl + ", identificador: " + this.identifier + ", directoria: " + s + "\n\n" + output);
+                        MessageBox.Show("Identifier: \"" + this.identifier + "\"\n" +
+                            "Directory: \"" + s + "\"\n" + 
+                            "ACL: \"" + acl + "\"\n\n" +
+                            output,
+                            "Error applying ACL",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
                 }
@@ -107,7 +126,12 @@ namespace ACLAFS
 
                 if (p.ExitCode != 0)
                 {
-                    MessageBox.Show("Erro a Aplicar ACL " + acl + ", identificador: " + this.identifier + ", directoria: " + this.directory + "\n\n" + output);
+                    MessageBox.Show("Identifier: \"" + this.identifier + "\"\n" +
+                        "Directory: \"" + output + "\"\n" +
+                        "ACL: \"" + acl + "\"\n\n" +
+                        output,
+                        "Error applying ACL",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -130,36 +154,39 @@ namespace ACLAFS
             }
         }
 
-        public void ChooseDirectory()
+        public Boolean ChooseDirectory()
         {
             try
             {
                 using (FolderBrowserDialog dialog = new FolderBrowserDialog())
                 {
-                    //dialog.Description = "Open a folder which contains the xml output";
+                    dialog.Description = "Choose folder to apply ACL";
                     dialog.ShowNewFolderButton = false;
-                    //dialog.RootFolder = Environment.SpecialFolder.MyComputer;
-
-                    //MessageBox.Show(this.directory);
+                    dialog.RootFolder = Environment.SpecialFolder.MyComputer;
 
                     if (this.directory != "")
                     {
                         dialog.SelectedPath = this.directory;
                     }
+                    /*
                     else
                     {
                         dialog.SelectedPath = @"Y:\user\p\pe\pedro.oliveira\public\zbr2";
                     }
+                    */
 
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         this.directory = dialog.SelectedPath;
+                        return true;
                     }
                 }
+                return false;
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Import failed because " + exc.Message + " , please try again later.");
+                MessageBox.Show("Opening folder failed because " + exc.Message + " , please try again later.");
+                return false;
             }
         }
 

@@ -31,27 +31,33 @@ namespace ACLAFS
         {
             aclGrp.Enabled = false;
             a.identifier = identificadorTxt.Text;
-            a.ChooseDirectory();
-            directoriaTxt.Text = a.directory;
-            if (a.directory != null) {
-                UpdateCheckboxes();
+
+            if (a.ChooseDirectory())
+            {
+                directoriaTxt.Text = a.directory;
+                if (a.directory != null)
+                {
+                    UpdateCheckboxes();
+                }
             }
         }
 
         private void UpdateCheckboxes()
         {
-            a.ParseFSOutput();
-            aclGrp.Enabled = true;
-            applyBtn.Enabled = true;
-            recursiveChkBox.Enabled = true;
+            if (a.ParseFSOutput())
+            {
+                aclGrp.Enabled = true;
+                applyBtn.Enabled = true;
+                recursiveChkBox.Enabled = true;
 
-            readChkBox.Checked = Convert.ToBoolean(a.acls["r"]);
-            lookupChkBox.Checked = Convert.ToBoolean(a.acls["l"]);
-            insertChkBox.Checked = Convert.ToBoolean(a.acls["i"]);
-            deleteChkBox.Checked = Convert.ToBoolean(a.acls["d"]);
-            writeChkBox.Checked = Convert.ToBoolean(a.acls["w"]);
-            lockChkBox.Checked = Convert.ToBoolean(a.acls["k"]);
-            administerChkBox.Checked = Convert.ToBoolean(a.acls["a"]);
+                readChkBox.Checked = Convert.ToBoolean(a.acls["r"]);
+                lookupChkBox.Checked = Convert.ToBoolean(a.acls["l"]);
+                insertChkBox.Checked = Convert.ToBoolean(a.acls["i"]);
+                deleteChkBox.Checked = Convert.ToBoolean(a.acls["d"]);
+                writeChkBox.Checked = Convert.ToBoolean(a.acls["w"]);
+                lockChkBox.Checked = Convert.ToBoolean(a.acls["k"]);
+                administerChkBox.Checked = Convert.ToBoolean(a.acls["a"]);
+            }
         }
 
         private String getAclString()
