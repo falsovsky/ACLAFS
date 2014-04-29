@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -95,6 +96,38 @@ namespace ACLAFS
             UpdateCheckboxes();
         }
 
+        private void directoriaTxt_TextChanged(object sender, EventArgs e)
+        {
+            if ((identificadorTxt.Text != "") && Directory.Exists(directoriaTxt.Text) && IsNetworkPath(directoriaTxt.Text))
+            {
+                a.identifier = identificadorTxt.Text;
+                a.directory = directoriaTxt.Text;
+                aclGrp.Enabled = true;
+
+                UpdateCheckboxes();
+                //directoriaTxt.BackColor = Color.Green;
+            }
+            else
+            {
+                aclGrp.Enabled = false;
+                applyBtn.Enabled = false;
+                recursiveChkBox.Enabled = false;
+            }
+        }
+
+        public static bool IsNetworkPath(string path)
+        {
+            if (path == "\\") return false;
+
+            if (!path.StartsWith(@"/") && !path.StartsWith(@"\"))
+            {
+                string rootPath = System.IO.Path.GetPathRoot(path); // get drive's letter
+                System.IO.DriveInfo driveInfo = new System.IO.DriveInfo(rootPath); // get info about the drive
+                return driveInfo.DriveType == DriveType.Network; // return true if a network drive
+            }
+
+            return true; // is a UNC path
+        }
 
     }
 }

@@ -50,10 +50,9 @@
             // 
             this.directoriaTxt.Location = new System.Drawing.Point(12, 35);
             this.directoriaTxt.Name = "directoriaTxt";
-            this.directoriaTxt.ReadOnly = true;
             this.directoriaTxt.Size = new System.Drawing.Size(188, 20);
-            this.directoriaTxt.TabIndex = 0;
-            this.directoriaTxt.TabStop = false;
+            this.directoriaTxt.TabIndex = 2;
+            this.directoriaTxt.TextChanged += new System.EventHandler(this.directoriaTxt_TextChanged);
             // 
             // procurarBtn
             // 
@@ -62,7 +61,7 @@
             this.procurarBtn.Location = new System.Drawing.Point(206, 35);
             this.procurarBtn.Name = "procurarBtn";
             this.procurarBtn.Size = new System.Drawing.Size(75, 23);
-            this.procurarBtn.TabIndex = 2;
+            this.procurarBtn.TabIndex = 3;
             this.procurarBtn.Text = "Browse...";
             this.procurarBtn.UseVisualStyleBackColor = true;
             this.procurarBtn.Click += new System.EventHandler(this.procurarBtn_Click);
@@ -109,7 +108,7 @@
             this.administerChkBox.Location = new System.Drawing.Point(172, 65);
             this.administerChkBox.Name = "administerChkBox";
             this.administerChkBox.Size = new System.Drawing.Size(88, 17);
-            this.administerChkBox.TabIndex = 6;
+            this.administerChkBox.TabIndex = 10;
             this.administerChkBox.Text = "a - administer";
             this.administerChkBox.UseVisualStyleBackColor = true;
             // 
@@ -119,7 +118,7 @@
             this.lockChkBox.Location = new System.Drawing.Point(172, 42);
             this.lockChkBox.Name = "lockChkBox";
             this.lockChkBox.Size = new System.Drawing.Size(61, 17);
-            this.lockChkBox.TabIndex = 5;
+            this.lockChkBox.TabIndex = 9;
             this.lockChkBox.Text = "k - lock";
             this.lockChkBox.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +128,7 @@
             this.writeChkBox.Location = new System.Drawing.Point(172, 19);
             this.writeChkBox.Name = "writeChkBox";
             this.writeChkBox.Size = new System.Drawing.Size(65, 17);
-            this.writeChkBox.TabIndex = 4;
+            this.writeChkBox.TabIndex = 8;
             this.writeChkBox.Text = "w - write";
             this.writeChkBox.UseVisualStyleBackColor = true;
             // 
@@ -139,7 +138,7 @@
             this.deleteChkBox.Location = new System.Drawing.Point(6, 91);
             this.deleteChkBox.Name = "deleteChkBox";
             this.deleteChkBox.Size = new System.Drawing.Size(70, 17);
-            this.deleteChkBox.TabIndex = 3;
+            this.deleteChkBox.TabIndex = 7;
             this.deleteChkBox.Text = "d - delete";
             this.deleteChkBox.UseVisualStyleBackColor = true;
             // 
@@ -149,7 +148,7 @@
             this.insertChkBox.Location = new System.Drawing.Point(6, 67);
             this.insertChkBox.Name = "insertChkBox";
             this.insertChkBox.Size = new System.Drawing.Size(62, 17);
-            this.insertChkBox.TabIndex = 2;
+            this.insertChkBox.TabIndex = 6;
             this.insertChkBox.Text = "i - insert";
             this.insertChkBox.UseVisualStyleBackColor = true;
             // 
@@ -159,7 +158,7 @@
             this.lookupChkBox.Location = new System.Drawing.Point(6, 43);
             this.lookupChkBox.Name = "lookupChkBox";
             this.lookupChkBox.Size = new System.Drawing.Size(69, 17);
-            this.lookupChkBox.TabIndex = 1;
+            this.lookupChkBox.TabIndex = 5;
             this.lookupChkBox.Text = "l - lookup";
             this.lookupChkBox.UseVisualStyleBackColor = true;
             // 
@@ -169,7 +168,7 @@
             this.readChkBox.Location = new System.Drawing.Point(6, 19);
             this.readChkBox.Name = "readChkBox";
             this.readChkBox.Size = new System.Drawing.Size(59, 17);
-            this.readChkBox.TabIndex = 0;
+            this.readChkBox.TabIndex = 4;
             this.readChkBox.Text = "r - read";
             this.readChkBox.UseVisualStyleBackColor = true;
             // 
@@ -179,7 +178,7 @@
             this.applyBtn.Location = new System.Drawing.Point(205, 191);
             this.applyBtn.Name = "applyBtn";
             this.applyBtn.Size = new System.Drawing.Size(75, 23);
-            this.applyBtn.TabIndex = 5;
+            this.applyBtn.TabIndex = 12;
             this.applyBtn.Text = "Apply";
             this.applyBtn.UseVisualStyleBackColor = true;
             this.applyBtn.Click += new System.EventHandler(this.applyBtn_Click);
@@ -191,7 +190,7 @@
             this.recursiveChkBox.Location = new System.Drawing.Point(119, 193);
             this.recursiveChkBox.Name = "recursiveChkBox";
             this.recursiveChkBox.Size = new System.Drawing.Size(69, 17);
-            this.recursiveChkBox.TabIndex = 6;
+            this.recursiveChkBox.TabIndex = 11;
             this.recursiveChkBox.Text = "recursive";
             this.recursiveChkBox.UseVisualStyleBackColor = true;
             // 
