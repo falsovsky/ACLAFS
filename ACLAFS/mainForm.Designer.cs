@@ -83,7 +83,6 @@
             this.identificadorTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.identificadorTxt.Size = new System.Drawing.Size(194, 20);
             this.identificadorTxt.TabIndex = 1;
-            this.identificadorTxt.Text = "pedro.oliveira";
             this.identificadorTxt.WordWrap = false;
             this.identificadorTxt.TextChanged += new System.EventHandler(this.identificadorTxt_TextChanged);
             // 
