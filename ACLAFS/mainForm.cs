@@ -105,7 +105,6 @@ namespace ACLAFS
                 aclGrp.Enabled = true;
 
                 UpdateCheckboxes();
-                //directoriaTxt.BackColor = Color.Green;
             }
             else
             {

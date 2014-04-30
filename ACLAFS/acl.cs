@@ -35,7 +35,7 @@ namespace ACLAFS
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = true;
             p.StartInfo.FileName = "fs.exe";
-            p.StartInfo.Arguments = @"listacl " + this.directory;
+            p.StartInfo.Arguments = "listacl \"" + this.directory + "\"";
             p.Start();
 
             string output = p.StandardOutput.ReadToEnd();
@@ -95,7 +95,7 @@ namespace ACLAFS
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.RedirectStandardError = true;
                     p.StartInfo.FileName = "fs.exe";
-                    p.StartInfo.Arguments = @"setacl -dir " + s + " -acl " + this.identifier + " " + acl;
+                    p.StartInfo.Arguments = "setacl -dir \"" + s + "\" -acl " + this.identifier + " " + acl;
                     p.Start();
                     string output = p.StandardError.ReadToEnd();
                     p.WaitForExit();
@@ -119,7 +119,7 @@ namespace ACLAFS
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.RedirectStandardError = true;
                 p.StartInfo.FileName = "fs.exe";
-                p.StartInfo.Arguments = @"setacl -dir " + this.directory + " -acl " + this.identifier + " " + acl;
+                p.StartInfo.Arguments = "setacl -dir \"" + this.directory + "\" -acl " + this.identifier + " " + acl;
                 p.Start();
                 string output = p.StandardError.ReadToEnd();
                 p.WaitForExit();
