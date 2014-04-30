@@ -1,4 +1,7 @@
 ACLAFS
 ======
 
-An OpenAFS C# application to apply ACLs recursively
+An C# frontend to fs.exe to apply OpenAFS ACLs recursively.
+
+
+Instructions on http://falsovsky.github.io/ACLAFS
