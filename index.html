@@ -8,15 +8,15 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>Aclafs by falsovsky</title>
+    <title>ALS AFS by falsovsky</title>
   </head>
 
   <body>
 
     <header>
       <div class="container">
-        <h1>Aclafs</h1>
-        <h2>An OpenAFS C# application to apply ACLs recursively</h2>
+        <h1>ALS AFS</h1>
+        <h2>An C# frontend to apply OpenAFS ACLs recursively</h2>
 
         <section id="downloads">
           <a href="https://github.com/falsovsky/ACLAFS/zipball/master" class="btn">Download as .zip</a>
@@ -31,7 +31,7 @@
         <h3>
 <a name="welcome-to-acl-afs" class="anchor" href="#welcome-to-acl-afs"><span class="octicon octicon-link"></span></a>Welcome to ACL AFS</h3>
 
-<p>This application allows to apply recursively (or not) OpenAFS ACLs in Windows. It is mainly a front end for fs.exe.</p>
+<p>This application allows to apply recursively (or not) OpenAFS ACLs in Windows. It is mainly a frontend for fs.exe.</p>
 
 <h3>
 <a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h3>
@@ -41,14 +41,19 @@
 <h3>
 <a name="source-code" class="anchor" href="#source-code"><span class="octicon octicon-link"></span></a>Source Code</h3>
 
-<p>To build it you'll need "Microsoft Visual Studio Express 2013 for Windows Desktop" or better.</p>
+<p>To build it you'll need "Microsoft Visual Studio Express 2013 for Windows Desktop" or better. At least thats what I used.</p>
 
 <h3>
 <a name="using" class="anchor" href="#using"><span class="octicon octicon-link"></span></a>Using</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p><img src="https://github.com/falsovsky/ACLAFS/raw/master/screenshot.png" alt="Screenshot"></p>
 
-<h3>
+<ul>
+<li>On the first textbox write down the user/group that you want to add/alter/remove ACLs.</li>
+<li>On the second textbox type in the folder that you wish to apply the ACL (allows folder starting by \\), or click <strong>Browse</strong> to use a SelectFolderDialog.</li>
+<li>The current folder ACLs will be shown, change them as needed, and then click <strong>Apply</strong>.</li>
+<li>Dont forget to check the <strong>recursive</strong> option if you want it to be recursive.</li>
+</ul><h3>
 <a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h3>
 
 <p>Created by <a href="https://github.com/falsovsky" class="user-mention">@falsovsky</a> (Pedro de Oliveira) while working at FCT/UNL.</p>
