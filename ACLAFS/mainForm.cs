@@ -87,18 +87,36 @@ namespace ACLAFS
             procurarBtn.Enabled = false;
             if (identificadorTxt.Text.Length > 0) {
                 procurarBtn.Enabled = true;
+                a.identifier = identificadorTxt.Text;
+
+                if ((identificadorTxt.Text != "") && (directoriaTxt.Text.EndsWith("\\") == false) && Directory.Exists(directoriaTxt.Text) && IsNetworkPath(directoriaTxt.Text))
+                {
+                    a.identifier = identificadorTxt.Text;
+                    a.directory = directoriaTxt.Text;
+                    aclGrp.Enabled = true;
+
+                    UpdateCheckboxes();
+                }
+                else
+                {
+                    aclGrp.Enabled = false;
+                    applyBtn.Enabled = false;
+                    recursiveChkBox.Enabled = false;
+                }
             }
         }
 
         private void applyBtn_Click(object sender, EventArgs e)
         {
+            a.identifier = identificadorTxt.Text;
+            a.directory = directoriaTxt.Text;
             a.ApplyAcl(getAclString(), recursiveChkBox.Checked);
             UpdateCheckboxes();
         }
 
         private void directoriaTxt_TextChanged(object sender, EventArgs e)
         {
-            if ((identificadorTxt.Text != "") && Directory.Exists(directoriaTxt.Text) && IsNetworkPath(directoriaTxt.Text))
+            if ((identificadorTxt.Text != "") && (directoriaTxt.Text.EndsWith("\\") == false) && Directory.Exists(directoriaTxt.Text) && IsNetworkPath(directoriaTxt.Text))
             {
                 a.identifier = identificadorTxt.Text;
                 a.directory = directoriaTxt.Text;
