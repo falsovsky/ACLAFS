@@ -32,6 +32,7 @@ namespace ACLAFS
         public Boolean ParseFSOutput() {
             Process p = new Process();
             p.StartInfo.UseShellExecute = false;
+            p.StartInfo.CreateNoWindow = true;
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = true;
             p.StartInfo.FileName = "fs.exe";
@@ -65,7 +66,7 @@ namespace ACLAFS
             foreach (string s in lines)
             {
                 // Achei ACL para este identificador
-                if (s.Trim().StartsWith(this.identifier)) {
+                if (s.Trim().StartsWith(this.identifier + " ")) {
                     String r = s.Trim().Substring(this.identifier.Length);
                     
                     //Parsar as acls
@@ -92,6 +93,7 @@ namespace ACLAFS
                 {
                     Process p = new Process();
                     p.StartInfo.UseShellExecute = false;
+                    p.StartInfo.CreateNoWindow = true;
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.RedirectStandardError = true;
                     p.StartInfo.FileName = "fs.exe";
@@ -116,6 +118,7 @@ namespace ACLAFS
             {
                 Process p = new Process();
                 p.StartInfo.UseShellExecute = false;
+                p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.RedirectStandardError = true;
                 p.StartInfo.FileName = "fs.exe";
