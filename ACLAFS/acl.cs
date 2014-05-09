@@ -171,12 +171,6 @@ namespace ACLAFS
                     {
                         dialog.SelectedPath = this.directory;
                     }
-                    /*
-                    else
-                    {
-                        dialog.SelectedPath = @"Y:\user\p\pe\pedro.oliveira\public\zbr2";
-                    }
-                    */
 
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {

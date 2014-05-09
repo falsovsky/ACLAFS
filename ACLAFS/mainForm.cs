@@ -19,12 +19,6 @@ namespace ACLAFS
         public mainForm()
         {
             InitializeComponent();
-
-            if (identificadorTxt.Text.Length > 0)
-            {
-                procurarBtn.Enabled = true;
-            }
-
             a = new acl();
         }
         
